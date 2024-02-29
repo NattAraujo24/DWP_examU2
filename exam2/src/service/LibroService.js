@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const api = "http://localhost:8080/api/book/"
+const api = "http://localhost:8080/exam/book/"
 
 const saveBook = async (bookData) => {
     try {
