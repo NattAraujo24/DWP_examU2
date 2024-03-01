@@ -18,7 +18,7 @@ const router = new VueRouter({
     {
         path: '/modal',
         name: 'modal',
-        component: () => import('../views/Modal.vue'),
+        component: () => import('../views/ModalInsert.vue'),
         component: ModalVue
       }
   ]

@@ -31,32 +31,3 @@
         </form>
     </b-modal>
 </template>
-
-<script>
-import books from '../service/BookService';
-
-export default {
-    methods: {
-        async insertBook(event) {
-            try {
-                await books.onInsert(
-                    this.author,
-                    this.nameBook,
-                    this.gener,
-                    this.age
-                );
-                this.consultBooks();
-            } catch (error) {
-                alert(error.message);
-            } finally {
-                this.$bvModal.hide("form");
-                this.resetForm();
-            }
-        },
-        openModal() {
-            this.$bvModal.show("form");
-        },
-    }
-}
-
-</script>

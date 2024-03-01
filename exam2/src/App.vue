@@ -70,7 +70,6 @@
               drop-placeholder="Arrastre la imagen aquí..." accept="image/jpeg, image/png"></b-form-file>
           </b-form-group>
 
-          <!-- Botones de enviar y cancelar en el pie de la card -->
           <b-row class="mt-4">
             <b-col class="text-right">
               <b-button type="submit" variant="primary" class="btn-sm">Registrar</b-button>
@@ -80,7 +79,6 @@
         </form>
       </b-modal>
 
-      <!---Modal para editar-->
       <b-modal v-model="showEditModal" title="Editar libro" hide-footer>
         <form @submit.prevent="handleEditSubmit">
             <!-- Campos del formulario para editar el libro -->
@@ -101,7 +99,6 @@
                     drop-placeholder="Arrastre la imagen aquí..." accept="image/jpeg, image/png"></b-form-file>
             </b-form-group>
     
-            <!-- Botones de enviar y cancelar en el pie del modal -->
             <b-row class="mt-4">
                 <b-col class="text-right">
                     <b-button type="submit" variant="primary" class="btn-sm">Actualizar</b-button>
@@ -141,7 +138,7 @@ export default {
         name: "",
         author: "",
         publicationDate: "",
-        coverImage: null, // Puedes inicializarlo como null o como prefieras
+        coverImage: null, 
       },
       updateBook: {
         id: null,
@@ -161,7 +158,6 @@ export default {
   },
   methods: {
     openModal() {
-      // Resetea los valores del nuevo libro antes de abrir el modal
       this.newBook = {
         name: "",
         author: "",
@@ -178,13 +174,10 @@ export default {
     },
 
     openEditModal(book) {
-      // Establece los datos de 'updateBook' con los detalles del libro
       this.updateBook = { ...book };
-      // Abre el modal de edición
       this.showEditModal = true;
     },
 
-    // Método para cerrar el modal de edición
     closeEditModal() {
       // Cierra el modal de edición
       this.showEditModal = false;
@@ -241,24 +234,19 @@ export default {
 
     async handleSubmit() {
       try {
-        // Convierte la imagen a base64 si es necesario
         if (this.newBook.coverImage) {
           this.newBook.coverImage = await Functions.blobToBase64(this.newBook.coverImage, "image/jpeg");
         }
-        // Llama a la función para insertar el nuevo libro
         await insertBook(
           this.newBook.name,
           this.newBook.author,
           this.newBook.publicationDate,
           this.newBook.coverImage
         );
-        // Cierra el modal después de agregar el libro exitosamente
         this.showModal = false;
-        // Actualiza la lista de libros
         await this.consultBooks();
       } catch (error) {
         console.error("Error al agregar el libro:", error);
-        // Puedes manejar el error de la forma que desees
       }
     },
 
@@ -278,7 +266,6 @@ export default {
         await this.consultBooks();
       } catch (error) {
         console.error("Error al editar el libro:", error);
-        // Maneja el error según sea necesario
       }
     },
 
