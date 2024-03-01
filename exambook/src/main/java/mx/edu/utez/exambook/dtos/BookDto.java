@@ -21,7 +21,7 @@ public class BookDto {
     private String author;
     private LocalDate publicationDate;
     private String coverImage;
-    @JsonIgnore
+    //@JsonIgnore
     private Boolean status;
 
     public Book getBooks(){

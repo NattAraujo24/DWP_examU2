@@ -114,4 +114,15 @@ public class BookController {
                 HttpStatus.OK
         );
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<CustomResponse<Boolean>> delete(@PathVariable("id") Long id) {
+        CustomResponse<Boolean> response = this.service.delete(id);
+
+        if (response.getData()) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        }
+    }
 }

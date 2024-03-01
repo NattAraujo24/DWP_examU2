@@ -13,7 +13,7 @@
                     </b-form-group>
                 </b-col>
                 <b-col cols="12" class="mb-2">
-                    <b-form-group label="Fecha de publicación" label-fro="publicationDate">
+                    <b-form-group label="Fecha de publicación" label-for="publicationDate">
                         <b-form-datepicker id="publicationDate"  required></b-form-datepicker>
                     </b-form-group>
                 </b-col>
@@ -31,3 +31,14 @@
         </form>
     </b-modal>
 </template>
+
+<script>
+import BookService from '../service/BookService';
+
+export default{
+    data(){
+        
+    }
+}
+
+</script>
